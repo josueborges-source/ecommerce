@@ -2,17 +2,20 @@ package org.example.model;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class Product {
 
-    private Long id;
+    private String id;
     private String name;
     private String description;
-    private String price;
+    private Double price;
 
-    public Product(Long id, String name, String description, String price)
+
+    public Product( String name, String description, Double price)
     {
-        this.id = id;
+        this.id =  UUID.randomUUID().toString();;
         this.name = name;
         this.description = description;
         this.price = price;

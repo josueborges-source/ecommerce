@@ -1,5 +1,6 @@
 package org.example.repository;
 
+import org.example.model.Cart;
 import org.example.model.Customer;
 import org.springframework.stereotype.Repository;
 
@@ -8,21 +9,21 @@ import java.util.Map;
 import java.util.UUID;
 
 @Repository
-public class CustomerRepository {
-    private final Map<String, Customer> customers = new HashMap<>();
+public class CartRepository {
+    private final Map<String, Cart> carts = new HashMap<>();
 
-    public Customer save (Customer customer){
-        customer.setId(UUID.randomUUID().toString());
-        customers.put(customer.getId(), customer);
-
-        return customer;
+    public Cart save (Cart cart){
+        String id = UUID.randomUUID().toString();
+        cart.setId(id);
+        this.carts.put(cart.getId(), cart);
+        return cart;
     }
 
-    public Customer findById(String id) {
-        return customers.get(id);
+    public Cart getCart(String id) {
+        return carts.get(id);
     }
 
     public void deleteById(String id) {
-        customers.remove(id);
+        carts.remove(id);
     }
 }

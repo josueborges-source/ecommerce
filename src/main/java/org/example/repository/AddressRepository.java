@@ -1,7 +1,6 @@
 package org.example.repository;
 
-import org.example.model.Cart;
-import org.example.model.Customer;
+import org.example.model.Address;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -9,21 +8,21 @@ import java.util.Map;
 import java.util.UUID;
 
 @Repository
-public class CartRepository {
-    private Map<String, Cart> cart = new HashMap<>();
+public class AddressRepository {
+    private Map<String, Address> addressList = new HashMap<>();
 
-    public Cart save (Cart cart){
+    public Address save (Address address){
         String id = UUID.randomUUID().toString();
-        cart.setId(id);
-        this.cart.put(cart.getId(), cart);
-        return this.cart;
+        address.setId(id);
+        this.addressList.put(address.getId(), address);
+        return address;
     }
 
-    public Cart getCart(String id) {
-        return cart.get(id);
+    public Address getAddress(String id) {
+        return addressList.get(id);
     }
 
     public void deleteById(String id) {
-        cart.remove(id);
+        addressList.remove(id);
     }
 }
